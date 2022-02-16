@@ -1,0 +1,301 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("./img1/page\ back.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#stage {
+  margin: 0 auto;
+  width: 980px;
+  padding: 0 0 40px;
+  text-align: center;
+  position: relative;
+  /* background: 100px 300px url("./img1/Slots\ background.png") no-repeat; */
+}
+
+#rotate {
+  margin: 0 auto;
+  width: 980px;
+  height: 389px;
+  padding-top: 400px;
+  transform-style: preserve-3d;
+}
+
+.img {
+  position: absolute;
+  top: 15px;
+  left: 0%;
+}
+.ring {
+  margin: 0 auto;
+  height: 150px;
+  width: 150px;
+  float: left;
+  margin-right: 10px;
+  transform-style: preserve-3d;
+}
+
+.ring6 {
+  margin-right: 0 !important;
+}
+.slot {
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  box-sizing: border-box;
+  opacity: 0.9;
+  color: rgba(0, 0, 0, 0.9);
+
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.backface-on {
+  -webkit-backface-visibility: visible;
+  -moz-backface-visibility: visible;
+  backface-visibility: visible;
+}
+
+.slot p {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 80px;
+  margin: 0;
+  text-align: center;
+}
+
+.images {
+  width: calc(100% + 6px);
+  height: 150px;
+}
+
+.go {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 30px;
+  font-size: 20px;
+  cursor: pointer;
+}
+label {
+  cursor: pointer;
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+}
+.tilted {
+  transform: rotateY(45deg);
+}
+/*=====*/
+.spin-0 {
+  transform: rotateX(-3719deg);
+}
+.spin-1 {
+  transform: rotateX(-3749deg);
+}
+.spin-2 {
+  transform: rotateX(-3779deg);
+}
+.spin-3 {
+  transform: rotateX(-3809deg);
+}
+.spin-4 {
+  transform: rotateX(-3839deg);
+}
+.spin-5 {
+  transform: rotateX(-3869deg);
+}
+.spin-6 {
+  transform: rotateX(-3899deg);
+}
+.spin-7 {
+  transform: rotateX(-3929deg);
+}
+.spin-8 {
+  transform: rotateX(-3959deg);
+}
+.spin-9 {
+  transform: rotateX(-3989deg);
+}
+.spin-10 {
+  transform: rotateX(-4019deg);
+}
+.spin-11 {
+  transform: rotateX(-4049deg);
+}
+/*=====*/
+@keyframes back-spin {
+  /*0%    { transform: rotateX(0deg); }*/
+  100% {
+    transform: rotateX(30deg);
+  }
+}
+@keyframes tiltin {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(45deg);
+  }
+}
+@keyframes tiltout {
+  0% {
+    transform: rotateY(45deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes spin-0 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3719deg);
+  }
+}
+@keyframes spin-1 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3749deg);
+  }
+}
+@keyframes spin-2 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3779deg);
+  }
+}
+@keyframes spin-3 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3809deg);
+  }
+}
+@keyframes spin-4 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3839deg);
+  }
+}
+@keyframes spin-5 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3869deg);
+  }
+}
+@keyframes spin-6 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3899deg);
+  }
+}
+@keyframes spin-7 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3929deg);
+  }
+}
+@keyframes spin-8 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3959deg);
+  }
+}
+@keyframes spin-9 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-3989deg);
+  }
+}
+@keyframes spin-10 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-4019deg);
+  }
+}
+@keyframes spin-11 {
+  0% {
+    transform: rotateX(30deg);
+  }
+  100% {
+    transform: rotateX(-4049deg);
+  }
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 40%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#credit {
+  color: white;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 730px;
+  left: 62%;
+}
+
+.go {
+  position: absolute;
+  top: 695px;
+  left: 40%;
+}
