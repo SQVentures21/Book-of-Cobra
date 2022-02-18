@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
 
-<body>
-
-  <div id="stage">
-      <div id="rotate">
+  <body>
+    <div class="container">
+      <div id="stage">
+        <div id="rotate">
           <div id="ring1" class="ring"></div>
           <div id="ring2" class="ring"></div>
           <div id="ring3" class="ring"></div>
           <div id="ring4" class="ring"></div>
           <div id="ring5" class="ring"></div>
           <div id="ring6" class="ring"></div>
+        </div>
+        <img class="img" src="./img1/slots-top-final.png" alt="" />
+        <!-- <img class="go" src="./img1/butoon-new.png" alt="" /> -->
+        <div class="test-shine"></div>
+        <p id="credit">Wins 0 €</p>
+        <p id="spinRemain">Free Spins: 20</p>
+
+        <!-- The Modal -->
+        <div id="myModal1" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <p>Text modal 1</p>
+          </div>
+        </div>
+
+        <div id="myModal2" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <p>Text Modal 2</p>
+          </div>
+        </div>
+
+        <div id="myModal3" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <p>Text Modal 3</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <img class="img" src="./img1/slots top.png" alt="" width="950px"> 
+    <div class="payments">
+      <picture>
+        <source
+          media="(min-width:700px)"
+          srcset="./img1/cobra-international-payment-logos_desktop.webp"
+        />
+        <img src="./img1/cobra-international-payments-mobile.webp" alt="logo" />
+      </picture>
+    </div>
 
-    
-      <img class="go" src="./img1/butoon.png" alt="">
-
-  <div class="container">
-    <p id = "credit"> Total income: 0</p>
-  </div>
-
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
-
-</div>
-
-<div id="myModal1" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>asdasdasdasdas</p>
-  </div>
-
-</div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
