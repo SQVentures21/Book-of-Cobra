@@ -1,32 +1,39 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("./img1/page\ back.png");
+  box-sizing: border-box;
+  background-image: url("./img1/background-final.png");
   background-position: center;
+  background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 #stage {
-  margin: 0 auto;
-  width: 980px;
+  margin-top: 9vh;
+  margin-inline: auto;
+  width: 946px;
   padding: 0 0 40px;
   text-align: center;
   position: relative;
-  /* background: 100px 300px url("./img1/Slots\ background.png") no-repeat; */
+  background: 10px 175px url("./img1/Slots\ background.png") no-repeat;
+  max-width: 100vw;
 }
 
 #rotate {
   margin: 0 auto;
-  width: 980px;
-  height: 389px;
+  width: 960px;
+  height: 316px;
   padding-top: 400px;
   transform-style: preserve-3d;
+  max-width: 100vw;
 }
 
 .img {
   position: absolute;
-  top: 15px;
-  left: 0%;
+  top: -100px;
+  left: -88px;
+  width: 1137px;
 }
 .ring {
   margin: 0 auto;
@@ -37,9 +44,6 @@ body {
   transform-style: preserve-3d;
 }
 
-.ring6 {
-  margin-right: 0 !important;
-}
 .slot {
   position: absolute;
   height: 150px;
@@ -78,6 +82,8 @@ body {
   padding: 10px 30px;
   font-size: 20px;
   cursor: pointer;
+  border: none;
+  background-color: none;
 }
 label {
   cursor: pointer;
@@ -251,18 +257,18 @@ label {
 
 .modal {
   display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
+  position: absolute; /* Stay in place */
   z-index: 1; /* Sit on top */
   left: 0;
-  top: 0;
+  top: 250px;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  z-index: 3;
 }
 
 /* Modal Content/Box */
+
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
@@ -271,31 +277,129 @@ label {
   width: 40%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 #credit {
-  color: white;
-  font-size: 1.2rem;
+  color: #d18e2c;
+  font-size: 2rem;
   position: absolute;
-  top: 730px;
-  left: 62%;
+  top: 750px;
+  left: 745px;
+  font-family: "Roboto";
+  font-weight: 700;
+}
+
+#spinRemain {
+  color: #d18e2c;
+  font-size: 2rem;
+  position: absolute;
+  top: 750px;
+  left: 43px;
+  font-family: "Roboto";
+  font-weight: 700;
 }
 
 .go {
   position: absolute;
-  top: 695px;
-  left: 40%;
+  top: 697px;
+  left: 416px;
+  width: 65px;
+}
+
+.go:hover {
+  opacity: 0.2;
+}
+
+.test-shine {
+  width: 65px;
+  height: 65px;
+  background-image: url(./img1/65x65.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 703px;
+  left: 418px;
+  margin: 25px 0 25px 25px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: inline-block;
+  transition: all 0.2ss ease;
+}
+
+.test-shine:after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  opacity: 0;
+  transform: rotate(30deg);
+  background: rgba(255, 255, 255, 0.13);
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.13) 0%,
+    rgba(255, 255, 255, 0.13) 77%,
+    rgba(255, 255, 255, 0.5) 92%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* Hover state - trigger effect */
+.test-shine:hover:after {
+  opacity: 1;
+  left: 130%;
+  transition-property: left, top, opacity;
+  transition-duration: 0.7s, 0.7s, 0.15s;
+  transition-timing-function: ease;
+}
+
+.test-shine:hover {
+  transform: scale(0.9);
+}
+
+/* Active state */
+.test-shine:active:after {
+  opacity: 0;
+}
+
+@media (max-width: 700px) {
+  #stage {
+    margin-top: 27vh;
+  }
+}
+
+/* coin */
+
+#gimmick {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.payments {
+  display: flex;
+  justify-content: center;
+  align-items: centerd;
+  margin-top: 10vh;
+}
+
+.logo-slider {
+  background-color: #2c2c2c;
+  height: 77px;
+  margin-top: 7vh;
+}
+
+@media screen and (max-width: 360px) {
+  body {
+    background-image: url("./img1/mobile-background\ \(1\).jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
+
+  #stage {
+    margin-left: 97px !important;
+  }
 }
