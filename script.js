@@ -41,20 +41,33 @@ function getSeed(val = 0, previous = 0) {
   // generate random number smaller than 13 then floor it to settle between 0 and 12 inclusive
   return Math.floor(Math.random() * SLOTS_PER_REEL);
 }
-
+const modal1 = document.querySelector("#myModal1");
+const modal2 = document.querySelector("#myModal2");
+const modal3 = document.querySelector("#myModal3");
 function getValue(value, randomNr, nr, i) {
-  var modal1 = document.getElementById("myModal1");
   switch (value) {
     case 1:
       if (i === 2 || i === 3 || i === 4) {
         nr = randomNr;
+        setTimeout(function () {
+          modal2.style.display = "block";
+        }, 5500);
+
+        setTimeout(function () {
+          modal2.style.display = "none";
+        }, 9500);
       }
       break;
     case 2:
       nr = randomNr;
-      //   setTimeout(function () {
-      //     modal1.style.display = "block";
-      //   }, 5000);
+      setTimeout(function () {
+        modal1.style.display = "block";
+      }, 5500);
+
+      setTimeout(function () {
+        modal1.style.display = "none";
+      }, 9500);
+
       break;
 
     default:
@@ -63,7 +76,7 @@ function getValue(value, randomNr, nr, i) {
   return nr;
 }
 
-function spin(value) {
+async function spin(value) {
   let randomNr = Math.floor(Math.random() * 12);
   for (var i = 1; i < 7; i++) {
     var oldSeed = -1;
@@ -92,11 +105,19 @@ function spin(value) {
       )
       .attr("class", "ring spin-" + nr);
   }
+  return true;
 }
+
+//https://stackoverflow.com/questions/1836105/how-to-wait-5-seconds-with-jquery
+$.wait = function (callback, seconds) {
+  return window.setTimeout(callback, seconds * 1000);
+};
 
 $(document).ready(function () {
   let count = 0;
   let totalValue = 0;
+  let countRemain = 20;
+
   let income_matrix = [
     [2, 0, 1, 0, 2, 0, 1, 0, 0, 1, 0, 2, 0, 2, 0, 1, 0, 2, 0, 1],
     // [0, 2, 0, 1, 0, 2, 2, 0, 1, 0, 0, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 0],
@@ -105,7 +126,7 @@ $(document).ready(function () {
     // [0, 2, 0, 1, 0, 2, 2, 0, 1, 0, 0, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 0],
     // [0, 2, 0, 1, 0, 2, 2, 0, 1, 0, 0, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 0],
     // [0, 2, 0, 1, 0, 2, 2, 0, 1, 0, 0, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 0],
-    // [0, 2, 0, 1, 0, 2, 2, 0, 1, 0, 0, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 0]
+    // [0, 2, 0, 1, 0, 2, 2, 0, 1, 0, 0, 1, 0, 1, 0, 2, 0, 0, 1, 0, 1, 0, 0, 0],
   ];
   let randomNr = Math.floor(Math.random() * income_matrix.length - 1);
 
@@ -116,28 +137,37 @@ $(document).ready(function () {
   createSlots($("#ring5"));
   createSlots($("#ring6"));
 
-  const button = document.querySelector(".go");
-  var modal = document.getElementById("myModal");
-  $(".go").on("click", function () {
-    button.disabled = true;
+  //const button = document.querySelector(".go");
+  $(".test-shine").on("keypress click", function (e) {
+    if (e.which === 13 || e.type === "click") {
+      document.querySelector(".test-shine").style.pointerEvents = "none";
+      if (count === 20) {
+        modal3.style.display = "block";
+      }
+      // spin(income_matrix[randomNr][count]);
 
-    // spin(income_matrix[randomNr][count]);
-    spin(income_matrix[0][count]);
-    $("#credit").text(function () {
-      // totalValue = income_matrix[randomNr][count] + totalValue;
-      totalValue = income_matrix[0][count] + totalValue;
-      return "Total income: " + String(totalValue);
-    });
+      spin(income_matrix[0][count]);
+      // $.wait(function () {
+      $("#credit").text(function () {
+        // totalValue = income_matrix[randomNr][count] + totalValue;
+        totalValue = income_matrix[0][count] + totalValue;
+        return "WIN: " + String(totalValue) + " €";
+        console.log(totalValue);
+      });
+      // }, 5);
 
-    setTimeout(function () {
-      button.disabled = false;
-    }, 5000);
-
-    count = count + 1;
-    if (count === 20) {
       setTimeout(function () {
-        modal.style.display = "block";
+        document.querySelector(".test-shine").style.pointerEvents = "auto";
       }, 5000);
+
+      $.wait(function () {
+        $("#spinRemain").text(function () {
+          countRemain = countRemain - 1;
+          return "Free Spins:" + String(countRemain);
+        });
+      }, 5);
+
+      count = count + 1;
     }
   });
 });
