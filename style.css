@@ -390,7 +390,7 @@ label {
   margin-top: 7vh;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 700px) {
   body {
     background-image: url("./img1/mobile-background\ \(1\).jpg");
     background-position: center;
