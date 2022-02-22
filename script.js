@@ -44,6 +44,8 @@ function getSeed(val = 0, previous = 0) {
 const modal1 = document.querySelector("#myModal1");
 const modal2 = document.querySelector("#myModal2");
 const modal3 = document.querySelector("#myModal3");
+const video1 = document.querySelector("#video");
+const video2 = document.querySelector("#video1");
 function getValue(value, randomNr, nr, i) {
   switch (value) {
     case 1:
@@ -51,22 +53,25 @@ function getValue(value, randomNr, nr, i) {
         nr = randomNr;
         setTimeout(function () {
           modal2.style.display = "block";
+          video2.play();
         }, 5500);
 
         setTimeout(function () {
           modal2.style.display = "none";
-        }, 9500);
+        }, 10500);
       }
+
       break;
     case 2:
       nr = randomNr;
       setTimeout(function () {
         modal1.style.display = "block";
+        video1.play();
       }, 5500);
 
       setTimeout(function () {
         modal1.style.display = "none";
-      }, 9500);
+      }, 10500);
 
       break;
 
@@ -76,8 +81,9 @@ function getValue(value, randomNr, nr, i) {
   return nr;
 }
 
-async function spin(value) {
+function spin(value) {
   let randomNr = Math.floor(Math.random() * 12);
+
   for (var i = 1; i < 7; i++) {
     var oldSeed = -1;
     var oldClass = $("#ring" + i).attr("class");
@@ -105,8 +111,23 @@ async function spin(value) {
       )
       .attr("class", "ring spin-" + nr);
   }
+
   return true;
 }
+
+function spinSound() {
+  spinSound1 = document.querySelector("#myAudio");
+  spinSound1.play();
+}
+// function playPause1() {
+//   if (audio1.paused) {
+//     audio1.play();
+//     playbtn1.style.background = "url(img1/stop.png) no-repeat";
+//   } else {
+//     audio1.pause();
+//     playbtn1.style.background = "url(img1/play.png) no-repeat";
+//   }
+// }
 
 //https://stackoverflow.com/questions/1836105/how-to-wait-5-seconds-with-jquery
 $.wait = function (callback, seconds) {
@@ -139,7 +160,7 @@ $(document).ready(function () {
 
   //const button = document.querySelector(".go");
   $(".test-shine").on("keypress click", function (e) {
-    if (e.which === 13 || e.type === "click") {
+    if (e.code === "space" || e.type === "click") {
       document.querySelector(".test-shine").style.pointerEvents = "none";
       if (count === 20) {
         modal3.style.display = "block";
@@ -152,7 +173,6 @@ $(document).ready(function () {
         // totalValue = income_matrix[randomNr][count] + totalValue;
         totalValue = income_matrix[0][count] + totalValue;
         return "WIN: " + String(totalValue) + " €";
-        console.log(totalValue);
       });
       // }, 5);
 
@@ -160,14 +180,42 @@ $(document).ready(function () {
         document.querySelector(".test-shine").style.pointerEvents = "auto";
       }, 5000);
 
-      $.wait(function () {
-        $("#spinRemain").text(function () {
-          countRemain = countRemain - 1;
-          return "Free Spins:" + String(countRemain);
-        });
-      }, 5);
+      // $.wait(function () {
+      $("#spinRemain").text(function () {
+        countRemain = countRemain - 1;
+        return "Free Spins:" + String(countRemain);
+      });
+      //  }, 5);
 
       count = count + 1;
     }
   });
 });
+
+function muteAll() {
+  const elems = document.querySelectorAll("video, audio");
+  const imgOff = document.querySelector(".image-off");
+  const imgOn = document.querySelector(".image-on");
+  for (const el of elems) {
+    // el.muted = !el.muted;
+
+    // if (el.muted) {
+    //   imgOff.style.display = "block";
+    //   imgOn.style.display = "none";
+    // }
+
+    if (el.muted === false) {
+      el.muted = true;
+      imgOn.style.display = "none";
+      imgOff.style.display = "block";
+    } else {
+      el.muted = false;
+      imgOn.style.display = "block";
+      imgOff.style.display = "none";
+    }
+  }
+}
+
+window.onload = function () {
+  document.getElementById("my_audio").play();
+};
