@@ -10,6 +10,11 @@
   </head>
 
   <body>
+    <audio
+      id="my_audio"
+      src="./img1/audio/LANDING PAGE SOUND.mp3"
+      loop="loop"
+    ></audio>
     <div class="container">
       <div id="stage">
         <div id="rotate">
@@ -20,24 +25,41 @@
           <div id="ring5" class="ring"></div>
           <div id="ring6" class="ring"></div>
         </div>
-        <img class="img" src="./img1/slots-top-final.png" alt="" />
+        <img class="img" src="./img1/slots top shadow final (1).png" alt="" />
         <!-- <img class="go" src="./img1/butoon-new.png" alt="" /> -->
-        <div class="test-shine"></div>
+        <div onclick="spinSound()" class="test-shine"></div>
         <p id="credit">Wins 0 €</p>
         <p id="spinRemain">Free Spins: 20</p>
-
+        <audio
+          id="myAudio"
+          src="./img1/audio/14036 slot machine rolls short.wav"
+        ></audio>
         <!-- The Modal -->
         <div id="myModal1" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
-            <p>Text modal 1</p>
+            <div class="container">
+              <video
+                id="video"
+                src="./img1/video/2euro_1.mp4"
+                width="1066px"
+                height="850px"
+              ></video>
+            </div>
           </div>
         </div>
 
         <div id="myModal2" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
-            <p>Text Modal 2</p>
+            <div class="container">
+              <video
+                id="video1"
+                src="./img1/video/1 EURO UNCOMPRESSE_1.mp4"
+                width="1066px"
+                height="850px"
+              ></video>
+            </div>
           </div>
         </div>
 
@@ -49,16 +71,43 @@
         </div>
       </div>
     </div>
+
     <div class="payments">
       <picture>
         <source
           media="(min-width:700px)"
           srcset="./img1/cobra-international-payment-logos_desktop.webp"
         />
-        <img src="./img1/cobra-international-payments-mobile.webp" alt="logo" />
+        <img
+          class="payment"
+          src="./img1/cobra-international-payments-mobile.webp"
+          alt="logo"
+        />
       </picture>
     </div>
 
+    <div class="audios">
+      <img
+        class="image-on"
+        onclick=" muteAll()"
+        src="./img1/sound-on (2).png"
+        alt=""
+      />
+      <img
+        class="image-off"
+        onclick=" muteAll()"
+        src="./img1/sound-off (2).png"
+        alt=""
+      />
+    </div>
+
+    <!-- 
+    <div class="slider-container"></div> -->
+    <script>
+      window.onload = function () {
+        document.getElementById("my_audio").play();
+      };
+    </script>
     <script src="script.js"></script>
   </body>
 </html>
